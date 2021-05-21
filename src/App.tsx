@@ -1,13 +1,15 @@
 import React from 'react';
 import './App.css';
 import AnimalsSelectorList from './components/AnimalsSelectorList';
-import FactsList from './components/FactsList';
+import AllFactsList from './components/AllFactsList'
 
 function App() {
   return (
     <div className="App">
+      <h2>Animals:</h2>
       <AnimalsSelectorList />
-      <FactsList />
+      <h2>All facts:</h2>
+      <AllFactsList />
     </div>
   );
 }

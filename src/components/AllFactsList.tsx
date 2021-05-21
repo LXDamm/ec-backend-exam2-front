@@ -2,10 +2,10 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { Fact } from "../types/fact";
 
-const FactsList = () => {
+const AllFactsList = () => {
     const [facts, setFacts] = useState<Array<Fact>>();
     const renderedFactsList = facts?.map((fact) => {
-        return (<li key={fact.uid}><p>{fact.fact}</p></li>);
+        return (<li key={fact.uid}><p className="all-fact-item">{fact.fact}</p></li>);
     });
     useEffect(() => {
         axios.get("http://localhost:5000/facts")
@@ -27,4 +27,4 @@ const FactsList = () => {
     );
 }
 
-export default FactsList;
+export default AllFactsList;

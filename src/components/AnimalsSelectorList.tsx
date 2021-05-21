@@ -7,7 +7,7 @@ const AnimalsSelectorList = () => {
     const [animals, setAnimals] = useState<Array<Animal>>();
     const [selectedAnimal, setSelectedAnimal] = useState<Animal>();
     const renderedAnimalsList = animals?.map((animal) => {
-        return (<li key={animal.uid}><button onClick={() => setSelectedAnimal(animal)}>{animal.name}</button></li>);
+        return (<li key={animal.uid}><button className="animal-button" onClick={() => setSelectedAnimal(animal)}>{animal.name}</button></li>);
     });
     useEffect(() => {
         axios.get("http://localhost:5000/animals")
