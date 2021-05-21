@@ -1,5 +1,6 @@
 import axios from "axios";
 import { ChangeEvent, useState } from "react";
+import { useHistory } from "react-router-dom";
 import { Animal } from "../types/animal";
 import { Fact } from "../types/fact";
 
@@ -9,10 +10,12 @@ interface AnimalProp {
 
 const SelectedAnimal = (props: AnimalProp) => {
     const [factToAdd, setFactToAdd] = useState('');
+    let history = useHistory();
     const removeSelectedFact = (uid: string) => {
         axios.delete(`http://localhost:5000/animals/${props.animal?.uid}/facts/${uid}`)
             .then((response) => {
                 console.log("Removed fact");
+                history.go(0);
             })
             .catch(() => console.error("error deleting fact"));
     };
@@ -20,7 +23,8 @@ const SelectedAnimal = (props: AnimalProp) => {
         console.log(factToAdd);
         axios.put(`http://localhost:5000/animals/${props.animal?.uid}/facts`, { fact: factToAdd })
             .then((response) => {
-                console.log("Added fact (stub)");
+                console.log("Added fact");
+                history.go(0);
             })
             .catch(() => console.error("error adding fact"));
     };
